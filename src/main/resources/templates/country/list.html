@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="/layout::head">
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>
+    <a th:href="@{/country/create}">
+        Create new country
+    </a>
+</p>
+<p>
+    <a th:href="@{/city}">
+        city
+    </a>
+</p>
+<table id="city">
+    <tr>
+        <td>STT</td>
+        <td>Tên</td>
+        <td>Tên thành phố</td>
+        <td>Update</td>
+        <td>Xóa</td>
+    </tr>
+    <tr th:each="c,cStatus : ${country}">
+        <td th:text="${cStatus.count}"></td>
+        <td th:text="${c.nameC}"></td>
+        <td th:text="${c.nameCity}"></td>
+        <td><a th:href="@{country/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{country/delete/{id}(id=${c.getId()})}">delete</a></td>
+    </tr>
+</table>
+
+<footer th:replace="/layout::footer"></footer>
+
+</body>
+</html>

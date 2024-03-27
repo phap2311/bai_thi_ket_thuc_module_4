@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/city/create}">
+        Create new city
+    </a>
+</p>
+
+
+
+
+<table id = "city">
+    <tr>
+        <td>STT</td>
+        <td>Tên quốc gia</td>
+        <td>thành phố</td>
+        <td>Diện tích</td>
+        <td>Dân số</td>
+        <td>GDP</td>
+        <td>Mô tả</td>
+        <td>Update</td>
+        <td>Xóa</td>
+    </tr>
+    <tr th:each="c,cStatus : ${city}">
+        <td th:text="${cStatus.count}"></td>
+        <td th:text="${c.country.nameC}"></td>
+        <td th:text="${c.country.nameCity}"></td>
+        <td th:text="${c.area}"></td>
+        <td th:text="${c.people}"></td>
+        <td th:text="${c.gdp}"></td>
+        <td th:text="${c.description}"></td>
+        <td><a th:href="@{city/update/{id}(id=${c.getId()})}">update</a></td>
+        <td><a th:href="@{city/delete/{id}(id=${c.getId()})}">delete</a></td>
+    </tr>
+</table>
+<footer th:replace="/layout::footer"></footer>
+
+</body>
+</html>

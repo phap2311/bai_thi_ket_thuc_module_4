@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/country}">
+        back to list type
+    </a>
+</p>
+<div >
+    <form th:action="@{/country/update/{id}(id = ${country.getId()})}" th:object="${country}" novalidate="novalidate"
+          method="post">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <div>
+                <label for="nameC">Tên quốc gia</label>
+                <input type="text" id="nameC" th:field="*{nameC}">
+            </div>
+            <div>
+                <label for="nameCity">Tên thành phố</label>
+                <input type="text" id="nameCity" th:field="*{nameCity}">
+            </div>
+            <div>
+                <input type="submit" value="save">
+            </div>
+        </div>
+    </form>
+</div>
+<footer th:replace="/layout::footer"></footer>
+
+</body>
+</html>

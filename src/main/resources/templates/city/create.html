@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/city}">
+        back to list
+    </a>
+</p>
+
+    <form th:action="@{/city/create}" th:object="${city}" method="post" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}">
+
+        <div>
+            <label for="country">Tên quốc gia</label>
+            <select id="country" th:field="*{country}">
+                <option th:each="t : ${country}" th:value="${t.id}" th:text="${t.nameC}">
+
+                </option>
+            </select>
+        </div>
+            <div>
+                <label for="country1">Tên thành phố</label>
+                <select id="country1" th:field="*{country}">
+                    <option th:each="t : ${country}" th:value="${t.id}" th:text="${t.nameCity}">
+
+                    </option>
+                </select>
+            </div>
+
+
+
+        <div>
+            <label for=area>diện tích</label>
+            <input type="text" id="area" th:field="*{area}">
+        </div>
+        <div>
+            <label for="description">Mô tả</label>
+            <input type="text" id="description" th:field="*{description}">
+        </div>
+        <div>
+            <label for="gdp">GDP</label>
+            <input type="text" id="gdp" th:field="*{gdp}">
+        </div>
+        <div>
+            <label for="people">Dân sô</label>
+            <input type="text" id="people" th:field="*{people}">
+        </div>
+
+
+            <input type="submit" value="save">
+
+    </form>
+<footer th:replace="/layout::footer"></footer>
+
+</body>
+</html>
